@@ -1,0 +1,13 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "properties": { "nama": "Banda Neira" },
+            "geometry": {
+                "coordinates": [129.89084724742386, -4.546262187670432],
+                "type": "Point"
+            }
+        }
+    ]
+}
