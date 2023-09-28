@@ -1,45 +1,9 @@
 [
     {
-        "title": "Jumlah Penduduk",
-        "colors": [
-            "#a6cee3",
-            "#1f78b4",
-            "#b2df8a",
-            "#33a02c",
-            "#fb9a99",
-            "#e31a1c",
-            "#fdbf6f",
-            "#ff7f00",
-            "#cab2d6",
-            "#6a3d9a",
-            "#ffff99",
-            "#b15928",
-            "#fdb462",
-            "#b3de69",
-            "#fccde5",
-            "#d9d9d9",
-            "#bc80bd"
-        ],
-        "categories": [
-            "Bambanglipuro",
-            "Banguntapan",
-            "Bantul",
-            "Dlingo",
-            "Imogiri",
-            "Jetis",
-            "Kasihan",
-            "Kretek",
-            "Pajangan",
-            "Pandak",
-            "Piyungan",
-            "Pleret",
-            "Pundong",
-            "Sanden",
-            "Sedayu",
-            "Sewon",
-            "Srandakan"
-        ],
-        "data": [38656, 145956, 63678, 36966, 59065, 55478, 129233, 30608, 36297, 49600, 56272, 47626, 32654, 30340, 47649, 117200, 29414]
+        "title": "Jumlah Tim per Tahun",
+        "colors": ["#77B6EA"],
+        "categories": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
+        "data": [28, 29, 33, 36, 32, 32, 33]
     },
     {
         "title": "Penduduk Laki-laki",

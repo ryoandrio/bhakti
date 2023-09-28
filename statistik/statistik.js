@@ -7,7 +7,7 @@ async function loaddata() {
     var chartcontent = document.getElementById("chart-content");
 
     var datashow = document.getElementById("datashow").value;
-    var data = await fetch("penduduk.json");
+    var data = await fetch("statistik.json");
     var json = await data.json();
 
     if (datashow !== "") {
@@ -37,6 +37,67 @@ async function loaddata() {
     if (datashow == 1) {
         console.log(json[0].title);
 
+        // var options = {
+        //     series: [
+        //         {
+        //             name: json[0].title,
+        //             data: json[0].data,
+        //         },
+        //     ],
+        //     chart: {
+        //         type: "bar",
+        //         height: 700,
+        //     },
+        //     plotOptions: {
+        //         bar: {
+        //             borderRadius: 4,
+        //             distributed: true,
+        //             horizontal: true,
+        //             dataLabels: {
+        //                 position: "top",
+        //             },
+        //         },
+        //     },
+        //     xaxis: {
+        //         categories: json[0].categories,
+        //     },
+        //     yaxis: {
+        //         title: {
+        //             text: "Kecamatan",
+        //             style: {
+        //                 fontSize: "14px",
+        //             },
+        //         },
+        //     },
+        //     colors: json[0].colors,
+        //     tooltip: {
+        //         y: {
+        //             formatter: function (val) {
+        //                 return val + " Jiwa";
+        //             },
+        //         },
+        //     },
+        //     title: {
+        //         text: json[0].title,
+        //         align: "center",
+        //     },
+        //     dataLabels: {
+        //         enabled: true,
+        //         style: {
+        //             fontSize: "12px",
+        //             colors: ["#000"],
+        //         },
+        //         offsetX: -5,
+        //     },
+        //     legend: {
+        //         position: "top",
+        //     },
+        // };
+
+        // var chart = new ApexCharts(document.querySelector("#chart"), options);
+        // $("#loading").remove();
+        // chart.render();
+
         var options = {
             series: [
                 {
@@ -45,52 +106,60 @@ async function loaddata() {
                 },
             ],
             chart: {
-                type: "bar",
-                height: 700,
-            },
-            plotOptions: {
-                bar: {
-                    borderRadius: 4,
-                    distributed: true,
-                    horizontal: true,
-                    dataLabels: {
-                        position: "top",
-                    },
+                height: 350,
+                type: "line",
+                dropShadow: {
+                    enabled: true,
+                    color: "#000",
+                    top: 18,
+                    left: 7,
+                    blur: 10,
+                    opacity: 0.2,
                 },
-            },
-            xaxis: {
-                categories: json[0].categories,
-            },
-            yaxis: {
-                title: {
-                    text: "Kecamatan",
-                    style: {
-                        fontSize: "14px",
-                    },
+                toolbar: {
+                    show: false,
                 },
             },
             colors: json[0].colors,
-            tooltip: {
-                y: {
-                    formatter: function (val) {
-                        return val + " Jiwa";
-                    },
-                },
+            dataLabels: {
+                enabled: true,
+            },
+            stroke: {
+                curve: "smooth",
             },
             title: {
                 text: json[0].title,
-                align: "center",
+                align: "left",
             },
-            dataLabels: {
-                enabled: true,
-                style: {
-                    fontSize: "12px",
-                    colors: ["#000"],
+            grid: {
+                borderColor: "#e7e7e7",
+                row: {
+                    colors: ["#f3f3f3", "transparent"], // takes an array which will be repeated on columns
+                    opacity: 0.5,
                 },
-                offsetX: -5,
+            },
+            markers: {
+                size: 1,
+            },
+            xaxis: {
+                categories: json[0].categories,
+                title: {
+                    text: "Month",
+                },
+            },
+            yaxis: {
+                title: {
+                    text: "Jumlah Tim",
+                },
+                // min: 5,
+                // max: 40,
             },
             legend: {
                 position: "top",
+                horizontalAlign: "right",
+                floating: true,
+                offsetY: -25,
+                offsetX: -5,
             },
         };
 

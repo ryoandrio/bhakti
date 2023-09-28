@@ -12,6 +12,7 @@
             integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
             crossorigin="anonymous"
         />
+
         <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
@@ -41,10 +42,16 @@
                 height: calc(100% - 56px);
                 margin-top: 56px;
             }
+
+            #mapInput {
+                width: 100%;
+                height: 450px;
+            }
         </style>
     </head>
 
     <body>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
         <script src="https://unpkg.com/leaflet@1.9.1/dist/leaflet.js"></script>
         <script
@@ -75,10 +82,107 @@
                         <li class="nav-item">
                             <a class="nav-link" href="../statistik/statistik.html"><i class="fa-solid fa-chart-line mx-2"></i>Statistik</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="input.html"><i class="fa-solid fa-file-circle-plus mx-2"></i>Tambah Data</a>
+                            <!-- <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#infoModal"
+                                ><i class="fa-solid fa-file-circle-plus mx-2"></i>Tambah Data</a
+                            > -->
+                        </li>
                     </ul>
                 </div>
             </div>
         </nav>
+
+        <!-- Modal Tambah Data -->
+        <!-- <div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+                <div class="modal-content">
+                    <div class="modal-header alert-dark">
+                        <h5 class="modal-title" id="exampleModalCenterTitle">
+                            <i class="fa-solid fa-file-circle-plus mx-2"></i>Tambah Data Lokasi KKN
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row mb-4">
+                            <div class="col-sm">
+                                <div class="form-group">
+                                    <label for="nama"><strong>Nama Objek</strong></label>
+                                    <input
+                                        type="text"
+                                        class="form-control text-primary mt-2"
+                                        id="nama"
+                                        name="nama"
+                                        placeholder="Nama objek"
+                                        value=""
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-4">
+                            <div class="col-sm">
+                                <div class="form-group">
+                                    <label for="deskripsi"><strong>Deskripsi</strong></label>
+                                    <input
+                                        type="text"
+                                        class="form-control text-primary mt-2"
+                                        id="deskripsi"
+                                        name="deskripsi"
+                                        placeholder="Deskripsi"
+                                        value=""
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-4">
+                            <div class="col-sm">
+                                <div class="form-group">
+                                    <label for="latitude"><strong>Lintang</strong></label>
+                                    <input
+                                        type="text"
+                                        class="form-control text-primary mt-2"
+                                        id="latitude"
+                                        name="latitude"
+                                        placeholder="Latitude"
+                                        value=""
+                                    />
+                                </div>
+                            </div>
+                            <div class="col-sm">
+                                <div class="form-group">
+                                    <label for="longitude"><strong>Bujur</strong></label>
+                                    <input
+                                        type="text"
+                                        class="form-control text-primary mt-2"
+                                        id="longitude"
+                                        name="longitude"
+                                        placeholder="Longitude"
+                                        value=""
+                                    />
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label><strong>&nbsp;</strong></label
+                                    ><br />
+                                    <a href="#" type="button" class="btn btn-danger btn-block mt-2" id="mapbutton" onclick="mapCenter()"
+                                        ><i class="fas fa-search-location"></i> Cari</a
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="card p-1">
+                            <div id="mapInput"></div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
         <!-- Modal Feature -->
         <div class="modal fade" id="featureModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
@@ -89,24 +193,23 @@
                     </div>
                     <div class="modal-body text-center" id="feature-info"></div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Tutup</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
                     </div>
                 </div>
             </div>
         </div>
-
         <!-- End of Modal Feature -->
 
         <div id="map"></div>
 
-        <script>
+        <!-- <script>
             /* Set Up Map */
             var center = [-2.5040312, 119.3994141];
-            var map = L.map("map").setView(center, 5);
+            var pointMap = L.map("map").setView(center, 5);
             L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
                 maxZoom: 19,
                 attribution: "© OpenStreetMap",
-            }).addTo(map);
+            }).addTo(pointMap);
 
             // var marker = L.marker([-4.546262187670432, 129.89084724742386]).addTo(map)
             //     .bindPopup('<b>Hello world!</b><br />I am a popup.').openPopup();
@@ -167,7 +270,7 @@
             });
             $.getJSON("titik.geojson", function (data) {
                 titik.addData(data);
-                map.addLayer(titik);
+                pointMap.addLayer(titik);
             });
 
             /* Scale Bar */
@@ -176,7 +279,50 @@
                     maxWidth: 150,
                     imperial: false,
                 })
-                .addTo(map);
+                .addTo(pointMap);
+        </script> -->
+
+        <script>
+            /* Initial Map */
+            var map = L.map("map").setView([-2.5040312, 119.3994141], 5); //lat, long, zoom
+
+            /* Tile Basemap */
+            var basemap = L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {});
+            basemap.addTo(map);
+
+            /* GeoJSON Point */
+            var pointobj = L.geoJson(null, {
+                onEachFeature: function (feature, layer) {
+                    if (feature.properties) {
+                        var content =
+                            "<strong>" +
+                            feature.properties.unit +
+                            "</strong><br>" +
+                            feature.properties.subunit +
+                            "<br>" +
+                            "<small>" +
+                            feature.properties.timestamp +
+                            "</small><hr>" +
+                            "<a href='#' class='btn btn-success btn-sm text-light disabled'>Edit</a> <a href='#' class='btn btn-danger btn-sm text-light disabled'>Delete</a>";
+                        layer.on({
+                            click: function (e) {
+                                pointobj.bindPopup(content);
+                            },
+                            mouseover: function (e) {
+                                pointobj.bindTooltip(feature.properties.namaobjek);
+                            },
+                        });
+                    }
+                },
+            });
+            $.getJSON(
+                "https://script.google.com/macros/s/AKfycbzoL0onOULelaqvnNcq2UqiNSZlPr92OBzxyYTj03WkM_TqmWGTq4mQIkTZ7y02_cyC/exec",
+                function (data) {
+                    pointobj.addData(data);
+                    map.addLayer(pointobj);
+                    // map.fitBounds(pointobj.getBounds());
+                }
+            );
         </script>
     </body>
 </html>
