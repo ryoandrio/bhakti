@@ -1,0 +1,147 @@
+{
+    "type": "FeatureCollection",
+    "name": "proker_kkn",
+    "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "unit": "Banda Neira",
+                "subunit": "Boiyauw",
+                "proker1": "Utilization of nutmeg as an antiseptic medicine",
+                "kluster1": "Health and Medicine",
+                "sdgs1": "Goal 3, Goal 4, Goal 15 ",
+                "proker2": "Ecotourism development strategy",
+                "kluster2": "Tourism",
+                "sdgs2": "Goal 1, Goal 8, Goal 9, Goal 13, Goal 14, Goal 15 ",
+                "proker3": "Workshop and Assistance in Making SPP-IRT Permits for MSEs",
+                "kluster3": "Small industry",
+                "sdgs3": "Goal 8, Goal 9, Goal 11, Goal 12",
+                "lat": -4.5462707775399798,
+                "long": 129.890846647334,
+                "gambar": "banda_neira.jpeg"
+            },
+            "geometry": { "type": "Point", "coordinates": [129.890846647334001, -4.54627077753998] }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "unit": "Banda Neira",
+                "subunit": "Lonthoir",
+                "proker1": "Making Verticulture Planting Media",
+                "kluster1": "Plantation",
+                "sdgs1": "Goal 2, Goal 3, Goal 6, Goal 9, Goal 11",
+                "proker2": "Diversification of nutmeg into paladang",
+                "kluster2": "Small industry",
+                "sdgs2": "Goal 3, Goal 8 , Goal 9, Goal 12",
+                "proker3": "Socialization of the introduction of nutmeg essential oil products",
+                "kluster3": "Forestry",
+                "sdgs3": "Goal 8, Goal 9, Goal 10, Goal 12",
+                "lat": -4.5497755702541696,
+                "long": 129.87948005015301,
+                "gambar": "banda_neira.jpeg"
+            },
+            "geometry": { "type": "Point", "coordinates": [129.879480050153006, -4.54977557025417] }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "unit": "Banggai Laut",
+                "subunit": "Lokotoy",
+                "proker1": "Processing Local Commodities into Food Products (VCO)",
+                "kluster1": "Small industry",
+                "sdgs1": "Goal 1, Goal 2, Goal 3, Goal 5, Goal 10, Goal 12, Goal 15, Goal 17",
+                "proker2": "Mangrove Planting",
+                "kluster2": "Forestry",
+                "sdgs2": "Goal 3, Goal 4, Goal 6, Goal 11, Goal 12, Goal 13, Goal 14",
+                "proker3": "Creation of Profile Books, Masterplans and Map Albums",
+                "kluster3": "Information and Mass Media",
+                "sdgs3": "Goal 1, Goal 3, Goal 4, Goal 8, Goal 10, Goal 16, Goal 17",
+                "lat": -1.5118385019054399,
+                "long": 123.52287749263201,
+                "gambar": "banggai_laut.jpeg"
+            },
+            "geometry": { "type": "Point", "coordinates": [123.522877492632006, -1.51183850190544] }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "unit": "Banggai Laut",
+                "subunit": "Pasir Putih",
+                "proker1": "Dental Health Education (DHE)",
+                "kluster1": "Health and Medicine",
+                "sdgs1": "Goal 3, Goal 4, Goal 19, Goal 16, Goal 17",
+                "proker2": "Designing Tour Routes and Packages",
+                "kluster2": "Tourism",
+                "sdgs2": "Goal 1, Goal 3, Goal 4, Goal 8, Goal 9, Goal 10, Goal 11, Goal 17",
+                "proker3": "Creation of Profile Books, Masterplans and Map Albums",
+                "kluster3": "Information and Mass Media",
+                "sdgs3": "Goal 1, Goal 3, Goal 4, Goal 8, Goal 10, Goal 16, Goal 18",
+                "lat": -1.60932936439687,
+                "long": 123.57130472015,
+                "gambar": "banggai_laut.jpeg"
+            },
+            "geometry": { "type": "Point", "coordinates": [123.571304720149996, -1.60932936439687] }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "unit": "Banggai Laut",
+                "subunit": "Matanga",
+                "proker1": "Socialization and Workshop on Cultivation of Medicinal Plants and Herbs Based on GAP (good agricultural practices)",
+                "kluster1": "Agriculture",
+                "sdgs1": "Goal 1, Goal 2, Goal 3, Goal 4, Goal 8, Goal 9, Goal 10, Goal 12, Goal 17",
+                "proker2": "Soap Making as a Tourism Product",
+                "kluster2": "Small industry",
+                "sdgs2": "Goal 1, Goal 3, Goal 6, Goal 7, Goal 8, Goal 10, Goal 17",
+                "proker3": "Creation of Profile Books, Masterplans and Map Albums",
+                "kluster3": "Information and Mass Media",
+                "sdgs3": "Goal 1, Goal 3, Goal 4, Goal 8, Goal 10, Goal 16, Goal 19",
+                "lat": -1.7137369352801199,
+                "long": 123.592393594489,
+                "gambar": "banggai_laut.jpeg"
+            },
+            "geometry": { "type": "Point", "coordinates": [123.592393594488996, -1.71373693528012] }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "unit": "Pelita Nusantara",
+                "subunit": "Sepaku",
+                "proker1": "Senandika Sepaku Festival 2023",
+                "kluster1": "Interdisciplinary",
+                "sdgs1": "Goal 8, Goal 9, Goal 11, Goal 17",
+                "proker2": "Socialization and Assistance for NIB, SPP-IRT, and Halal Certification",
+                "kluster2": "Social and humanities",
+                "sdgs2": "Goal 1, Goal 8, Goal 11, Goal 17",
+                "proker3": "Gama Rain-Filter Installation and Maintenance Education",
+                "kluster3": "Science and technology",
+                "sdgs3": "Goal 6, Goal 7, Goal 11",
+                "lat": -0.89893239964212002,
+                "long": 116.76574431421599,
+                "gambar": "sepaku.JPG"
+            },
+            "geometry": { "type": "Point", "coordinates": [116.765744314215993, -0.89893239964212] }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "unit": "Pelita Nusantara",
+                "subunit": "Suka Raja",
+                "proker1": "Senandika Sepaku Festival 2023",
+                "kluster1": "Interdisciplinary",
+                "sdgs1": "Goal 8, Goal 9, Goal 11, Goal 18",
+                "proker2": "Socialization and Assistance for NIB, SPP-IRT, and Halal Certification",
+                "kluster2": "Social and humanities",
+                "sdgs2": "Goal 1, Goal 8, Goal 11, Goal 17",
+                "proker3": "Gama Rain-Filter Installation and Maintenance Education",
+                "kluster3": "Science and technology",
+                "sdgs3": "Goal 6, Goal 7, Goal 11",
+                "lat": -0.91143343448907499,
+                "long": 116.78765940510699,
+                "gambar": "sepaku.JPG"
+            },
+            "geometry": { "type": "Point", "coordinates": [116.787659405106993, -0.911433434489075] }
+        }
+    ]
+}

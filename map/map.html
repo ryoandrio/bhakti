@@ -102,16 +102,16 @@
 
         <!-- Modal Feature -->
         <div class="modal fade" id="featureModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal modal-dialog-centered modal-dialog-scrollable" role="document">
+            <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
                 <div class="modal-content">
                     <div class="modal-header alert-info">
                         <h5 class="modal-title" id="feature-title">Modal title</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body text-center" id="feature-info"></div>
-                    <div class="modal-footer">
+                    <!-- <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -297,58 +297,84 @@
                 onEachFeature: function (feature, layer) {
                     var content =
                         // "<h5>Beranda Neira</h5>" +
-                        '<img src="../img/banda_neira.jpeg" alt="" height="50%" width="50%">' +
+                        // '<img src="../img/banda_neira.jpeg" alt="" height="50%" width="50%">' +
+                        '<img src="../img/' +
+                        feature.properties.gambar +
+                        '" alt="" height="50%" width="50%">' +
                         "<br>" +
-                        '<p class="text-center">KKN-PPM Beranda Neira merupakan tim pengabdian masyarakat yang berfokus pada upaya pengembangan masyarakat di Negeri Administratif Boiyauw & Lonthoir, Kecamatan Banda, Maluku Tengah dengan mengusung tema “Pemberdayaan Masyarakat Lokal Melalui Optimalisasi Agroindustri Pala dan Perikanan Sebagai Sumber EKonomi  Potensial yang Berkelanjutan di Kecamatan Banda, Kab. Maluku Tengah, Prov. Maluku</p>' +
                         "<hr>" +
                         '<table class="table table-striped table-bordered table-sm">' +
                         "<thead>" +
                         "<tr>" +
                         '<th scope="col">No</th>' +
-                        '<th scope="col">Desa</th>' +
-                        '<th scope="col">Proker</th>' +
-                        '<th scope="col">Sub-Klaster</th>' +
+                        '<th scope="col">Sub Unit</th>' +
+                        '<th scope="col">Progam</th>' +
+                        '<th scope="col">Sub-Cluster</th>' +
                         '<th scope="col">SDGs</th>' +
                         "</tr>" +
                         "</thead>" +
                         "<tbody>" +
                         "<tr>" +
                         '<th scope="row">1</th>' +
-                        "<td>Boiyauw</td>" +
-                        "<td>Pemanfaatan buah pala untuk obat antiseptik</td>" +
-                        "<td>Kesehatan dan Kedokteran</td>" +
-                        "<td>(3) kehidupan sehat dan sejahtera; (4) pendidikan berkualitas; (15) lingkungan di darat</td>" +
+                        "<td>" +
+                        feature.properties.subunit +
+                        "</td>" +
+                        "<td>" +
+                        feature.properties.proker1 +
+                        "</td>" +
+                        "<td>" +
+                        feature.properties.kluster1 +
+                        "</td>" +
+                        "<td>" +
+                        feature.properties.sdgs1 +
+                        "</td>" +
                         "</tr>" +
                         "<tr>" +
                         '<th scope="row">2</th>' +
-                        "<td>Boiyauw</td>" +
-                        "<td>Strategi pengembangan ekowisata</td>" +
-                        "<td>Pariwisata</td>" +
-                        "<td>(1) menghapus kemiskinan ; (8) pekerjaan layak dan pertumbuhan ekonomi ; (9) infrastruktur, industri, dan inovasi ; (13) Penanganan perubahan iklim ; (14) menjaga ekosistem laut ; (15) menjaga ekosistem darat</td>" +
+                        "<td>" +
+                        feature.properties.subunit +
+                        "</td>" +
+                        "<td>" +
+                        feature.properties.proker2 +
+                        "</td>" +
+                        "<td>" +
+                        feature.properties.kluster2 +
+                        "</td>" +
+                        "<td>" +
+                        feature.properties.sdgs2 +
+                        "</td>" +
                         "</tr>" +
                         "<tr>" +
                         '<th scope="row">3</th>' +
-                        "<td>Lonthoir</td>" +
-                        "<td>Diversifikasi buah pala menjadi paladang</td>" +
-                        "<td>Industri Kecil</td>" +
-                        "<td>(3) Kehidupan Sehat dan Sejahtera, (8) Pekerjaan Layak dan Pertumbuhan Ekonomi, (9) Industri, Inovasi, dan Infrastruktur, (12) Konsumsi dan Produksi yang Bertanggungjawab</td>" +
+                        "<td>" +
+                        feature.properties.subunit +
+                        "</td>" +
+                        "<td>" +
+                        feature.properties.proker3 +
+                        "</td>" +
+                        "<td>" +
+                        feature.properties.kluster3 +
+                        "</td>" +
+                        "<td>" +
+                        feature.properties.sdgs3 +
+                        "</td>" +
                         "</tr>" +
                         "</tbody>" +
                         "</table>";
                     layer.on({
                         click: function (e) {
-                            $("#feature-title").html("Beranda Neira"); //Judul Modal
+                            $("#feature-title").html(feature.properties.unit); //Judul Modal
                             $("#feature-info").html(content); //Isi Modal
                             $("#featureModal").modal("show"); //Menampilkan featureModal
                         },
                         mouseover: function (e) {
-                            titikProgram.bindTooltip("Beranda Neira");
+                            titikProgram.bindTooltip(feature.properties.unit);
                         },
                     });
                 },
             });
 
-            $.getJSON("titik.geojson", function (data) {
+            $.getJSON("proker_kkn.geojson", function (data) {
                 titikProgram.addData(data);
                 map.addLayer(titikProgram);
             });
