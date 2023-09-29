@@ -119,87 +119,6 @@
 
         <div id="map"></div>
 
-        <!-- <script>
-            /* Set Up Map */
-            var center = [-2.5040312, 119.3994141];
-            var pointMap = L.map("map").setView(center, 5);
-            L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-                maxZoom: 19,
-                attribution: "© OpenStreetMap",
-            }).addTo(pointMap);
-
-            // var marker = L.marker([-4.546262187670432, 129.89084724742386]).addTo(map)
-            //     .bindPopup('<b>Hello world!</b><br />I am a popup.').openPopup();
-
-            var titik = L.geoJson(null, {
-                onEachFeature: function (feature, layer) {
-                    var content =
-                        // "<h5>Beranda Neira</h5>" +
-                        '<img src="../img/banda_neira.jpeg" alt="" height="50%" width="50%">' +
-                        "<br>" +
-                        '<p class="text-center">KKN-PPM Beranda Neira merupakan tim pengabdian masyarakat yang berfokus pada upaya pengembangan masyarakat di Negeri Administratif Boiyauw & Lonthoir, Kecamatan Banda, Maluku Tengah dengan mengusung tema “Pemberdayaan Masyarakat Lokal Melalui Optimalisasi Agroindustri Pala dan Perikanan Sebagai Sumber EKonomi  Potensial yang Berkelanjutan di Kecamatan Banda, Kab. Maluku Tengah, Prov. Maluku</p>' +
-                        "<hr>" +
-                        '<table class="table table-striped table-bordered table-sm">' +
-                        "<thead>" +
-                        "<tr>" +
-                        '<th scope="col">No</th>' +
-                        '<th scope="col">Desa</th>' +
-                        '<th scope="col">Proker</th>' +
-                        '<th scope="col">Sub-Klaster</th>' +
-                        '<th scope="col">SDGs</th>' +
-                        "</tr>" +
-                        "</thead>" +
-                        "<tbody>" +
-                        "<tr>" +
-                        '<th scope="row">1</th>' +
-                        "<td>Boiyauw</td>" +
-                        "<td>Pemanfaatan buah pala untuk obat antiseptik</td>" +
-                        "<td>Kesehatan dan Kedokteran</td>" +
-                        "<td>(3) kehidupan sehat dan sejahtera; (4) pendidikan berkualitas; (15) lingkungan di darat</td>" +
-                        "</tr>" +
-                        "<tr>" +
-                        '<th scope="row">2</th>' +
-                        "<td>Boiyauw</td>" +
-                        "<td>Strategi pengembangan ekowisata</td>" +
-                        "<td>Pariwisata</td>" +
-                        "<td>(1) menghapus kemiskinan ; (8) pekerjaan layak dan pertumbuhan ekonomi ; (9) infrastruktur, industri, dan inovasi ; (13) Penanganan perubahan iklim ; (14) menjaga ekosistem laut ; (15) menjaga ekosistem darat</td>" +
-                        "</tr>" +
-                        "<tr>" +
-                        '<th scope="row">3</th>' +
-                        "<td>Lonthoir</td>" +
-                        "<td>Diversifikasi buah pala menjadi paladang</td>" +
-                        "<td>Industri Kecil</td>" +
-                        "<td>(3) Kehidupan Sehat dan Sejahtera, (8) Pekerjaan Layak dan Pertumbuhan Ekonomi, (9) Industri, Inovasi, dan Infrastruktur, (12) Konsumsi dan Produksi yang Bertanggungjawab</td>" +
-                        "</tr>" +
-                        "</tbody>" +
-                        "</table>";
-                    layer.on({
-                        click: function (e) {
-                            $("#feature-title").html("Beranda Neira"); //Judul Modal
-                            $("#feature-info").html(content); //Isi Modal
-                            $("#featureModal").modal("show"); //Menampilkan featureModal
-                        },
-                        mouseover: function (e) {
-                            titik.bindTooltip("Beranda Neira");
-                        },
-                    });
-                },
-            });
-
-            $.getJSON("titik.geojson", function (data) {
-                titik.addData(data);
-                pointMap.addLayer(titik);
-            });
-
-            /* Scale Bar */
-            L.control
-                .scale({
-                    maxWidth: 150,
-                    imperial: false,
-                })
-                .addTo(pointMap);
-        </script> -->
-
         <script>
             /* Initial Map */
             var map = L.map("map").setView([-2.5040312, 119.3994141], 5); //lat, long, zoom
@@ -242,7 +161,7 @@
                             "<strong>" +
                             feature.properties.unit +
                             "</strong>" +
-                            " merupakan tim KKN-PPM UGM pada periode II tahun 2023 dengan lokasi pengabdian di Kecamatan " +
+                            " is a team of KKN-PPM UGM in the 2nd period of 2023 who performs service in " +
                             "<strong>" +
                             feature.properties.subunit +
                             "</strong>" +
@@ -250,7 +169,7 @@
                             "<strong>" +
                             feature.properties.provinsi +
                             "</strong>" +
-                            ". Tema yang diusung oleh tim ini adalah:" +
+                            ". The theme carried by this team is:" +
                             "<br>" +
                             "<em>" +
                             "'" +
