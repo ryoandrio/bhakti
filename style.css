@@ -14,7 +14,7 @@ section {
 }
 
 .card-img-top {
-  filter: blur(1px);
+  filter: blur(1.5px);
   /* -webkit-filter: blur(1px); */
 }
 
