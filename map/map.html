@@ -4,7 +4,7 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>GAMABHAKTI</title>
+        <title>BHAKTI</title>
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.1/dist/leaflet.css" />
         <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
@@ -22,6 +22,11 @@
         />
 
         <link href="https://fonts.googleapis.com/css?family=Manrope" rel="stylesheet" />
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/MarkerCluster.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.0/MarkerCluster.Default.min.css" />
+
+        <link rel="stylesheet" href="../dist/leaflet.awesome-markers.css" />
 
         <style>
             html,
@@ -59,10 +64,12 @@
             integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
             crossorigin="anonymous"
         ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/leaflet.markercluster.js"></script>
+        <script src="../dist/leaflet.awesome-markers.js"></script>
 
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #073c64">
             <div class="container" style="color: #fafafa">
-                <a class="navbar-brand" href="../index.html"><i class="fa-solid fa-users-between-lines mx-2"></i>GAMABHAKTI</a>
+                <a class="navbar-brand" href="../index.html"><i class="fa-solid fa-users-between-lines mx-2"></i>BHAKTI</a>
                 <button
                     class="navbar-toggler"
                     type="button"
@@ -93,99 +100,9 @@
             </div>
         </nav>
 
-        <!-- Modal Tambah Data -->
-        <!-- <div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
-                <div class="modal-content">
-                    <div class="modal-header alert-dark">
-                        <h5 class="modal-title" id="exampleModalCenterTitle">
-                            <i class="fa-solid fa-file-circle-plus mx-2"></i>Tambah Data Lokasi KKN
-                        </h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row mb-4">
-                            <div class="col-sm">
-                                <div class="form-group">
-                                    <label for="nama"><strong>Nama Objek</strong></label>
-                                    <input
-                                        type="text"
-                                        class="form-control text-primary mt-2"
-                                        id="nama"
-                                        name="nama"
-                                        placeholder="Nama objek"
-                                        value=""
-                                    />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row mb-4">
-                            <div class="col-sm">
-                                <div class="form-group">
-                                    <label for="deskripsi"><strong>Deskripsi</strong></label>
-                                    <input
-                                        type="text"
-                                        class="form-control text-primary mt-2"
-                                        id="deskripsi"
-                                        name="deskripsi"
-                                        placeholder="Deskripsi"
-                                        value=""
-                                    />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row mb-4">
-                            <div class="col-sm">
-                                <div class="form-group">
-                                    <label for="latitude"><strong>Lintang</strong></label>
-                                    <input
-                                        type="text"
-                                        class="form-control text-primary mt-2"
-                                        id="latitude"
-                                        name="latitude"
-                                        placeholder="Latitude"
-                                        value=""
-                                    />
-                                </div>
-                            </div>
-                            <div class="col-sm">
-                                <div class="form-group">
-                                    <label for="longitude"><strong>Bujur</strong></label>
-                                    <input
-                                        type="text"
-                                        class="form-control text-primary mt-2"
-                                        id="longitude"
-                                        name="longitude"
-                                        placeholder="Longitude"
-                                        value=""
-                                    />
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="form-group">
-                                    <label><strong>&nbsp;</strong></label
-                                    ><br />
-                                    <a href="#" type="button" class="btn btn-danger btn-block mt-2" id="mapbutton" onclick="mapCenter()"
-                                        ><i class="fas fa-search-location"></i> Cari</a
-                                    >
-                                </div>
-                            </div>
-                        </div>
-                        <hr />
-                        <div class="card p-1">
-                            <div id="mapInput"></div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-
         <!-- Modal Feature -->
         <div class="modal fade" id="featureModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
+            <div class="modal-dialog modal modal-dialog-centered modal-dialog-scrollable" role="document">
                 <div class="modal-content">
                     <div class="modal-header alert-info">
                         <h5 class="modal-title" id="feature-title">Modal title</h5>
@@ -268,6 +185,7 @@
                     });
                 },
             });
+
             $.getJSON("titik.geojson", function (data) {
                 titik.addData(data);
                 pointMap.addLayer(titik);
@@ -286,9 +204,35 @@
             /* Initial Map */
             var map = L.map("map").setView([-2.5040312, 119.3994141], 5); //lat, long, zoom
 
-            /* Tile Basemap */
-            var basemap = L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {});
-            basemap.addTo(map);
+            // Basemap
+            var base_osm = L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+                attribution: "© OpenStreetMap",
+            });
+            var base_esri = L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}", {
+                attribution: "Tiles&copy; Esri",
+            });
+            base_osm.addTo(map);
+
+            // Control Layer
+            var baseMaps = {
+                "Open Street Map": base_osm,
+                "Esri Imagery": base_esri,
+            };
+
+            /* Scale Bar */
+            L.control
+                .scale({
+                    maxWidth: 150,
+                    imperial: false,
+                })
+                .addTo(map);
+
+            var iconMarker = L.AwesomeMarkers.icon({
+                icon: "people-group",
+                markerColor: "blue",
+                stylePrefix: "fas",
+                prefix: "fa",
+            });
 
             /* GeoJSON Point */
             var pointobj = L.geoJson(null, {
@@ -297,16 +241,28 @@
                         var content =
                             "<strong>" +
                             feature.properties.unit +
-                            "</strong><br>" +
+                            "</strong>" +
+                            " merupakan tim KKN-PPM UGM pada periode II tahun 2023 dengan lokasi pengabdian di Kecamatan " +
+                            "<strong>" +
                             feature.properties.subunit +
+                            "</strong>" +
+                            ", " +
+                            "<strong>" +
+                            feature.properties.provinsi +
+                            "</strong>" +
+                            ". Tema yang diusung oleh tim ini adalah:" +
                             "<br>" +
-                            "<small>" +
-                            feature.properties.timestamp +
-                            "</small><hr>" +
-                            "<a href='#' class='btn btn-success btn-sm text-light disabled'>Edit</a> <a href='#' class='btn btn-danger btn-sm text-light disabled'>Delete</a>";
+                            "<em>" +
+                            "'" +
+                            feature.properties.tema +
+                            ".'" +
+                            "</em>";
                         layer.on({
                             click: function (e) {
-                                pointobj.bindPopup(content);
+                                // pointobj.bindPopup(content);
+                                $("#feature-title").html(feature.properties.unit); //Judul Modal
+                                $("#feature-info").html(content); //Isi Modal
+                                $("#featureModal").modal("show"); //Menampilkan featureModal
                             },
                             mouseover: function (e) {
                                 pointobj.bindTooltip(feature.properties.namaobjek);
@@ -314,15 +270,104 @@
                         });
                     }
                 },
+                pointToLayer: function (feature, latlng) {
+                    return L.marker(latlng, {
+                        icon: iconMarker,
+                    });
+                },
             });
             $.getJSON(
                 "https://script.google.com/macros/s/AKfycbzoL0onOULelaqvnNcq2UqiNSZlPr92OBzxyYTj03WkM_TqmWGTq4mQIkTZ7y02_cyC/exec",
                 function (data) {
                     pointobj.addData(data);
-                    map.addLayer(pointobj);
+                    // map.addLayer(pointobj);
                     // map.fitBounds(pointobj.getBounds());
+                    // markers.addLayer(pointobj);
+
+                    // map.addLayer(markers);
+                    var markers = new L.markerClusterGroup().addLayer(pointobj);
+                    map.addLayer(markers);
                 }
             );
+
+            // var markers = new L.markerClusterGroup().addLayer(pointobj);
+            // map.addLayer(markers);
+
+            var titikProgram = L.geoJson(null, {
+                onEachFeature: function (feature, layer) {
+                    var content =
+                        // "<h5>Beranda Neira</h5>" +
+                        '<img src="../img/banda_neira.jpeg" alt="" height="50%" width="50%">' +
+                        "<br>" +
+                        '<p class="text-center">KKN-PPM Beranda Neira merupakan tim pengabdian masyarakat yang berfokus pada upaya pengembangan masyarakat di Negeri Administratif Boiyauw & Lonthoir, Kecamatan Banda, Maluku Tengah dengan mengusung tema “Pemberdayaan Masyarakat Lokal Melalui Optimalisasi Agroindustri Pala dan Perikanan Sebagai Sumber EKonomi  Potensial yang Berkelanjutan di Kecamatan Banda, Kab. Maluku Tengah, Prov. Maluku</p>' +
+                        "<hr>" +
+                        '<table class="table table-striped table-bordered table-sm">' +
+                        "<thead>" +
+                        "<tr>" +
+                        '<th scope="col">No</th>' +
+                        '<th scope="col">Desa</th>' +
+                        '<th scope="col">Proker</th>' +
+                        '<th scope="col">Sub-Klaster</th>' +
+                        '<th scope="col">SDGs</th>' +
+                        "</tr>" +
+                        "</thead>" +
+                        "<tbody>" +
+                        "<tr>" +
+                        '<th scope="row">1</th>' +
+                        "<td>Boiyauw</td>" +
+                        "<td>Pemanfaatan buah pala untuk obat antiseptik</td>" +
+                        "<td>Kesehatan dan Kedokteran</td>" +
+                        "<td>(3) kehidupan sehat dan sejahtera; (4) pendidikan berkualitas; (15) lingkungan di darat</td>" +
+                        "</tr>" +
+                        "<tr>" +
+                        '<th scope="row">2</th>' +
+                        "<td>Boiyauw</td>" +
+                        "<td>Strategi pengembangan ekowisata</td>" +
+                        "<td>Pariwisata</td>" +
+                        "<td>(1) menghapus kemiskinan ; (8) pekerjaan layak dan pertumbuhan ekonomi ; (9) infrastruktur, industri, dan inovasi ; (13) Penanganan perubahan iklim ; (14) menjaga ekosistem laut ; (15) menjaga ekosistem darat</td>" +
+                        "</tr>" +
+                        "<tr>" +
+                        '<th scope="row">3</th>' +
+                        "<td>Lonthoir</td>" +
+                        "<td>Diversifikasi buah pala menjadi paladang</td>" +
+                        "<td>Industri Kecil</td>" +
+                        "<td>(3) Kehidupan Sehat dan Sejahtera, (8) Pekerjaan Layak dan Pertumbuhan Ekonomi, (9) Industri, Inovasi, dan Infrastruktur, (12) Konsumsi dan Produksi yang Bertanggungjawab</td>" +
+                        "</tr>" +
+                        "</tbody>" +
+                        "</table>";
+                    layer.on({
+                        click: function (e) {
+                            $("#feature-title").html("Beranda Neira"); //Judul Modal
+                            $("#feature-info").html(content); //Isi Modal
+                            $("#featureModal").modal("show"); //Menampilkan featureModal
+                        },
+                        mouseover: function (e) {
+                            titikProgram.bindTooltip("Beranda Neira");
+                        },
+                    });
+                },
+            });
+
+            $.getJSON("titik.geojson", function (data) {
+                titikProgram.addData(data);
+                map.addLayer(titikProgram);
+            });
+
+            var kernelDensity = new L.imageOverlay("https://ryoandrio.github.io/images/kernel_kkn.png", [
+                [-11.00761509, 94.973245918],
+                [6.076940332, 141.033207336],
+            ]).addTo(map);
+
+            var overlayMaps = {
+                // "Lokasi KKN-PPM": markers,
+                "Analisis Kernel Density": kernelDensity,
+                "Program KKN": titikProgram,
+            };
+            L.control
+                .layers(baseMaps, overlayMaps, {
+                    collapsed: true,
+                })
+                .addTo(map);
         </script>
     </body>
 </html>
